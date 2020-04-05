@@ -60,8 +60,9 @@ class ReplayBuffer(object):
 		np.save("./buffers/"+filename+".npy", self.storage)
 
 	def load(self, filename, bootstrap_dim=None):
-		with gzip.open(filename, 'rb') as f:
-				self.storage = pickle.load(f)
+# 		with gzip.open(filename, 'rb') as f:
+# 				self.storage = pickle.load(f)
+		self.storage = np.load(filename, allow_pickle=True).item()
 		# with open(filename, 'rb') as f:
 		#        self.storage = pickle.load(f)
 
